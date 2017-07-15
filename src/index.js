@@ -9,6 +9,13 @@ var GET_FACT_MSG_EN = [
     "Once upon a time: ",
     "I would like to show you: "
 ]
+var ASK_MSG_EN = [
+    "What else you would like to know?",
+    "More question?",
+    "Next question?",
+    "Anymore AI history you want to know?",
+    "What is your next question?"
+]
 // Test hooks - do not remove!
 exports.GetFactMsg = GET_FACT_MSG_EN;
 var APP_ID_TEST = "mochatest";  // used for mocha tests to prevent warning
@@ -21,8 +28,9 @@ var languageStrings = {
     "en": {
         "translation": {
             "FACTS": facts.FACTS_EN,
-            "SKILL_NAME": "My History Facts",  // OPTIONAL change this to a more descriptive name
+            "SKILL_NAME": "AI History Facts",  // OPTIONAL change this to a more descriptive name
             "GET_FACT_MESSAGE": GET_FACT_MSG_EN,
+            "ASK_MESSAGE": ASK_MSG_EN,
             "HELP_MESSAGE": "You can say tell me a fact, or, you can say exit... What can I help you with?",
             "HELP_REPROMPT": "What can I help you with?",
             "STOP_MESSAGE": "Goodbye!"
@@ -71,7 +79,8 @@ var handlers = {
 
         // Create speech output
         var speechOutput = this.t("GET_FACT_MESSAGE")[Math.floor(Math.random()*5)] + randomFact;
-        this.emit(':tellWithCard', speechOutput, this.t("SKILL_NAME"), randomFact)
+        var repromptSpeech = this.t("ASK_MESSAGE")[Math.floor(Math.random()*5)];
+        this.emit(':askWithCard', speechOutput, repromptSpeech, this.t("SKILL_NAME"), randomFact)
     },
     'GetNewYearFactIntent': function () {
         var fact_year = this.event.request.intent.slots.FACT_YEAR.value;
@@ -94,7 +103,8 @@ var handlers = {
 
         // Create speech output
         var speechOutput = this.t("GET_FACT_MESSAGE")[Math.floor(Math.random()*5)] + randomFact;
-        this.emit(':tellWithCard', speechOutput, this.t("SKILL_NAME"), randomFact)
+        var repromptSpeech = this.t("ASK_MESSAGE")[Math.floor(Math.random()*5)];
+        this.emit(':askWithCard', speechOutput, repromptSpeech, this.t("SKILL_NAME"), randomFact)
     },
     'AMAZON.HelpIntent': function () {
         var speechOutput = this.t("HELP_MESSAGE");
