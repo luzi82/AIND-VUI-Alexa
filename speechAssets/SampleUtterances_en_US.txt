@@ -1,4 +1,15 @@
 GetNewFactIntent a fact
+GetNewFactIntent a history fact
+GetNewFactIntent an AI history fact
 GetNewFactIntent tell me a fact
+GetNewFactIntent tell me a history fact
+GetNewFactIntent tell me an AI history fact
+GetNewFactIntent tell me something
 GetNewFactIntent give me a fact
+GetNewFactIntent give me a history fact
+GetNewFactIntent give me an AI history fact
 GetNewFactIntent give me something
+GetNewFactIntent show me a fact
+GetNewFactIntent show me a history fact
+GetNewFactIntent show me an AI history fact
+GetNewFactIntent show me something
